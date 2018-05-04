@@ -2,5 +2,5 @@
 
 
 @section('content')
-    <h1 class="text-capitalize">home works</h1>
+    Error 404, no se encuenta la pagina
 @endsection
