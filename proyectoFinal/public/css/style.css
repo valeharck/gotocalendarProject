@@ -4,8 +4,13 @@ h1 {
 
 .header {
     height: 20%;
-    background-color: black;
+    background-color: #212529;
 }
 body {
     background-color: #D3D3D3;
+}
+
+footer {
+    background-color: #212529;
+    color: #D3D3D3;
 }
