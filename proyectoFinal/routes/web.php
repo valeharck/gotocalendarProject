@@ -18,6 +18,5 @@ Route::get('/', function () {
 Route::get('/login', function (){
     return view('login.login');
 })->name('login');
-Route::get('/registro', function (){
-    return view('login.registro');
-})->name('registro');
+Route::get('/registro', 'RegisterController@create')->name('registro');
+Route::post('sendRegistro', ['as'=>'send', 'uses' =>'RegisterController@store']);
