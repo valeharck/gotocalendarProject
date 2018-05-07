@@ -20,6 +20,7 @@ class RegisterController extends Controller
         $usuario->email = $request->email;
         $usuario->username = $request->username;
         $usuario->password = $request->contrasenya;
+        $usuario->remember_token = $request->_token;
         if ($usuario->save()){
             return view('main.mainHome');
         }

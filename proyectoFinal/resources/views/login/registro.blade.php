@@ -21,7 +21,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" id="panelh"><h4 class="panel-title text-center text-capitalize">Registro</h4></div>
                     <div class="panel-body pt-2 pb-2 pr-2 pl-2" id="registro">
-                        <form>
+
                             {!! Form::open(['route' => 'send', 'method' => 'post']) !!}
                             {{csrf_field()}}
                             <div class="form-group row">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             {!! Form::close() !!}
-                        </form>
+
                     </div>
                 </div>
             </div>
