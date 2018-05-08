@@ -43,7 +43,7 @@ class RegisterController extends Controller
         $usuario->fecha_nacimiento = $request->fecha_nacimiento;
         $usuario->email = $request->email;
         $usuario->username = $request->username;
-        $usuario->password = $request->contrasenya;
+        $usuario->password = bcrypt($request->contrasenya);
         $usuario->remember_token = $request->_token;
         if ($usuario->save()){
             return view('main.mainHome');
