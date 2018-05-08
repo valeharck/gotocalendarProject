@@ -15,8 +15,7 @@ Route::get('/', function () {
     return view('main.mainHome');
 })->name('inicio');
 
-Route::get('/login', function (){
-    return view('login.login');
-})->name('login');
+Route::get('/login', 'LoginController@open')->name('login');
+Route::get('/postlogin', 'LoginController@postLogin')->name('entrar');
 Route::get('/registro', 'RegisterController@create')->name('registro');
 Route::post('sendRegistro','RegisterController@store') -> name('send');
