@@ -5,6 +5,7 @@
 @section('css')
     <link  type="text/css" href="{{ asset('css/registro.css')}}" rel="stylesheet">
     <link type="text/css" href="{{asset('js/jquery-ui-1.12.1.custom/jquery-ui.css')}} " rel="Stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
 @endsection
 
 @section('javascript')
@@ -24,56 +25,94 @@
 
                             {!! Form::open(['route' => 'send', 'method' => 'post']) !!}
                             {{csrf_field()}}
-                            <div class="form-group row">
-                                {!! Form::label('nombre', 'Nombre', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="form-group row has-feedback">
+                                {!! Form::label('nombre', 'Nombre', ['class' =>'col-sm-2 col-form-label']) !!}
                                 <div class="col-sm-10">
-                                    {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre']) !!}
+                                    @if($errors->has('nombre'))
+                                        {!! Form::text('nombre', null, ['class' => 'form-control border border-danger', 'placeholder' => 'Nombre']) !!}
+                                        <i class="oi oi-x" style="color: red"></i>
+                                    @else
+                                        {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre']) !!}
+                                    @endif
+                                    <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 {!! Form::label('apellidos', 'Apellidos', ['class' => 'col-sm-2 col-form-label']) !!}
                                 <div class="col-sm-10">
-                                    {!! Form::text('apellidos', null, ['class' => 'form-control', 'placeholder' => 'Apellidos']) !!}
+                                    @if($errors->has('apellidos'))
+                                        {!! Form::text('apellidos', null, ['class' => 'form-control border border-danger', 'placeholder' => 'Apellidos']) !!}
+                                        <i class="oi oi-x" style="color: red"></i>
+                                    @else
+                                        {!! Form::text('apellidos', null, ['class' => 'form-control', 'placeholder' => 'Apellidos']) !!}
+                                    @endif
+                                    <span class="text-danger">{{ $errors->first('apellidos') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 {!! Form::label('fecha_nacimiento', 'Fecha Nacimiento', ['class' => 'col-sm-2 col-form-label']) !!}
                                 <div class="col-sm-10">
-                                    {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control', 'placeholder' => 'Fecha Nacimiento']) !!}
-                                    <small id="errorDate"></small>
+                                    @if($errors->has('fecha_nacimiento'))
+                                        {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control border border-danger', 'placeholder' => 'Fecha Nacimiento']) !!}
+                                        <i class="oi oi-x" style="color: red"></i>
+                                    @else
+                                        {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control', 'placeholder' => 'Fecha Nacimiento']) !!}
+                                    @endif
+                                    <span class="text-danger">{{ $errors->first('fecha_nacimiento') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 {!! Form::label('email', 'Email', ['class' => 'col-sm-2 col-form-label']) !!}
                                 <div class="col-sm-10">
-                                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
-                                    <small id="errorEmail"></small>
+                                    @if($errors->has('email'))
+                                        {!! Form::email('email', null, ['class' => 'form-control border border-danger', 'placeholder' => 'Email']) !!}
+                                        <i class="oi oi-x" style="color: red"></i>
+                                    @else
+                                        {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+                                    @endif
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 {!! Form::label('username', 'Usuario', ['class' => 'col-sm-2 col-form-label']) !!}
                                 <div class="col-sm-10">
-                                    {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Usuario']) !!}
+                                    @if($errors->has('username'))
+                                        {!! Form::text('username', null, ['class' => 'form-control border border-danger', 'placeholder' => 'Usuario']) !!}
+                                        <i class="oi oi-x" style="color: red"></i>
+                                    @else
+                                        {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Usuario']) !!}
+                                    @endif
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 {!! Form::label('contrasenya', 'Contraseña', ['class' => 'col-sm-2 col-form-label']) !!}
                                 <div class="col-sm-10">
-                                    {{Form::macro('inputContra', function()
-                                    {
-                                    return '<input type="password" class="form-control" placeholder="Contraseña" name="contrasenya" />';
-                                    })}}
+                                    @if($errors->has('contrasenya'))
+                                        {{
+                                           Form::macro('inputContra', function(){
+                                               return '<input type="password" class="form-control border border-danger" placeholder="Contraseña" name="contrasenya" /><i class="oi oi-x" style="color: red"></i>';
+                                           })
+                                       }}
+                                    @else
+                                        {{
+                                            Form::macro('inputContra', function(){
+                                                return '<input type="password" class="form-control" placeholder="Contraseña" name="contrasenya" />';
+                                            })
+                                        }}
+                                    @endif
                                     {!! Form::inputContra() !!}
-                                    <small id="errorpwd"></small>
+                                        <span class="text-danger">{{ $errors->first('contrasenya') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row ">
                                 <div class="col-sm-10 mt-3 ">
                                     {!! Form::submit('Registrarse', ['class' => 'btn btn-dark ']) !!}
-                                    {{Form::macro('botonCancelar', function()
-                                    {
-                                    return '<a role="button" class=" btn btn-dark" href="'.route('inicio').'">Cancelar</a>';
-                                    })}}
+                                    {{
+                                        Form::macro('botonCancelar', function(){
+                                            return '<a role="button" class=" btn btn-dark" href="'.route('inicio').'">Cancelar</a>';
+                                        })
+                                    }}
                                     {!! Form::botonCancelar() !!}
                                 </div>
                             </div>
