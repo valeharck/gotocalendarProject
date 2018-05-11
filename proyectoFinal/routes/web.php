@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('main.mainHome');
 })->name('inicio');
 
-Route::group([ 'middleware' => 'authuser'], function(){
+
+//Route::group(['prefix' =>'user', 'middleware' => 'authuser'], function(){
 
     Route::get('/login', 'LoginController@open')->name('login');
-    Route::get('/postlogin', 'LoginController@postLogin')->name('entrar');
+    Route::post('/postlogin', 'LoginController@postLogin')->name('entrar');
     Route::get('/registro', 'RegisterController@create')->name('registro');
-    Route::post('sendRegistro','RegisterController@store') -> name('send');
+    Route::post('/sendRegistro','RegisterController@store') -> name('send');
 
-});
+//});
+    Route::get('/home', 'HomeController@index')->name('home');

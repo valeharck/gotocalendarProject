@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
 
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('authuser');
-    }
+    }*/
 
     public function create(){
         return view('login.registro');
@@ -41,7 +41,6 @@ class RegisterController extends Controller
         if ($errors->fails()) {
              return redirect()->back()->withErrors($errors);
         }
-
         //creamos el usuario nuevo
         $usuario = new User();
         $usuario->nombre = $request->nombre;

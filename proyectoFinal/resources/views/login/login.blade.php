@@ -14,18 +14,31 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h4 class="panel-title text-center text-capitalize">Iniciar Sesión</h4></div>
                     <div class="panel-body pt-2 pb-2 pr-2-pl-2">
-                        {!! Form::open() !!}
+                        <span class="text-danger">{{ $errors->first('ko') }}</span>
+                        {!! Form::open(['route' => 'entrar', 'method' => 'post']) !!}
                         {{csrf_field()}}
                         <div class="form-group row">
-                            {!! Form::label('usuario','Usuario',['class' => 'col-sm-2 col-form-label']) !!}
+                            {!! Form::label('usuario','Usuario',['class' => ' col-form-label', 'placeholder' => 'Usuario']) !!}
                             <div class="col-sm-10">
-                                {!! Form::text('usuario', null, ['class' => 'form-control', 'placeholder' => 'Usuario']) !!}
+                                @if($errors->has('usuario'))
+                                    {!! Form::text('usuario', null, ['class' => ' form-control border border-danger', 'placeholder' => 'Usuario']) !!}
+                                    <i class="oi oi-x" style="color: red"></i>
+                                @else
+                                    {!! Form::text('usuario', null, ['class' => 'form-control', 'placeholder' => 'Usuario']) !!}
+                                @endif
+                                    <span class="text-danger">{{ $errors->first('usuario') }}</span>
                             </div>
                         </div>
                         <div class="form-group row">
                             {!! Form::label('password','Contraseña',['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm-10">
-                                {!! Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Contraseña']) !!}
+                                @if($errors->has('password'))
+                                    {!! Form::text('password', null, ['class' => ' form-control border border-danger', 'placeholder' => 'Password']) !!}
+                                    <i class="oi oi-x" style="color: red"></i>
+                                @else
+                                    {!! Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Contraseña']) !!}
+                                @endif
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                         </div>
                         <div class="form-group row">

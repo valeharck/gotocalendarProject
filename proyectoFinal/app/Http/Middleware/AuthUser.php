@@ -17,10 +17,10 @@ class AuthUser
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-                return redirect('home.home');
-        } else {
-            return redirect('login');
+            if($request->is('user')){
+                return redirect('home.home',302);
+            }
         }
-        //return $next($request);
+        return $next($request);
     }
 }
