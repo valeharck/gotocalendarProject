@@ -38,11 +38,11 @@ class LoginController extends Controller
         if (Auth::attempt($credenciales, true)) {
             session([$this->session_key => Auth::user()]);
             return redirect('home');
-        } else {
-            $errors = ['ko' => 'Usuario o contrasenya inccorrectos'];
-            return redirect()->back()->withErrors($errors);
-
         }
+        $errors = ['ko' => 'Usuario o contrasenya inccorrectos'];
+        return redirect()->back()->withErrors($errors);;
+
+
 
 
 

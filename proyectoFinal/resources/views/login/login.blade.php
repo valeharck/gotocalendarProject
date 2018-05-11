@@ -18,7 +18,7 @@
                         {!! Form::open(['route' => 'entrar', 'method' => 'post']) !!}
                         {{csrf_field()}}
                         <div class="form-group row">
-                            {!! Form::label('usuario','Usuario',['class' => ' col-form-label', 'placeholder' => 'Usuario']) !!}
+                            {!! Form::label('usuario','Usuario',['class' => 'col-sm-2 col-form-label', 'placeholder' => 'Usuario']) !!}
                             <div class="col-sm-10">
                                 @if($errors->has('usuario'))
                                     {!! Form::text('usuario', null, ['class' => ' form-control border border-danger', 'placeholder' => 'Usuario']) !!}

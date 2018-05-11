@@ -1,6 +1,8 @@
 @auth
 Bienvenido
 @else
-No estas logueado
+    <script type="text/javascript">
+        window.location = "{{route('inicio')}}";//here double curly bracket
+    </script>
 @endauth
 
