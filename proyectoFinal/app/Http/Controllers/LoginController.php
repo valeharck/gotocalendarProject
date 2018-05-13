@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function postLogin(Request $request){
         $errors= Validator::make($request->all(),
             [
-                'username' => 'required',
+                'usuario' => 'required',
                 'password' => 'required'
             ],
             [
@@ -30,17 +30,18 @@ class LoginController extends Controller
         );
         if ($errors->fails()){
             return redirect()->back()->withErrors($errors);
+
         }
-        $credenciales = [
-            'usuario' => $request->usuario,
-            'password' => $request->password,
+        $credentials = [
+            'username' => $request->get('usuario'),
+            'password' => $request->get('password'),
         ];
-        if (Auth::attempt($credenciales, true)) {
+        if (Auth::attempt($credentials, true)) {
             session([$this->session_key => Auth::user()]);
             return redirect('home');
         }
-        $errors = ['ko' => 'Usuario o contrasenya inccorrectos'];
-        return redirect()->back()->withErrors($errors);;
+        $errors += [ 'invalid' => "Error, Usuario o contrasenya incorrectos" ];
+        return redirect()->back()->with($errors);
 
 
 

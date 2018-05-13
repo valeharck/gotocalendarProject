@@ -14,7 +14,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h4 class="panel-title text-center text-capitalize">Iniciar Sesión</h4></div>
                     <div class="panel-body pt-2 pb-2 pr-2-pl-2">
-                        <span class="text-danger">{{ $errors->first('ko') }}</span>
                         {!! Form::open(['route' => 'entrar', 'method' => 'post']) !!}
                         {{csrf_field()}}
                         <div class="form-group row">
@@ -53,6 +52,7 @@
                                 <span>No estas registrado? <a href="{{route('registro')}}">Registrate!</a></span>
                             </div>
                         </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
