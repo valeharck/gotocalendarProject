@@ -82,4 +82,9 @@ class UserController extends Controller
             return view('main.mainHome');
         }
     }
+
+    public function getLogout() {
+        session()->flush();
+        return redirect('/');
+    }
 }
