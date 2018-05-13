@@ -18,10 +18,10 @@ Route::get('/', function () {
 
 //Route::group(['prefix' =>'user', 'middleware' => 'authuser'], function(){
 
-    Route::get('/login', 'LoginController@open')->name('login');
-    Route::post('/postlogin', 'LoginController@postLogin')->name('entrar');
-    Route::get('/registro', 'RegisterController@create')->name('registro');
-    Route::post('/sendRegistro','RegisterController@store') -> name('send');
+    Route::get('/login', 'UserController@getLogin')->name('login');
+    Route::post('/postlogin', 'UserController@postLogin')->name('entrar');
+    Route::get('/registro', 'UserController@getRegister')->name('registro');
+    Route::post('/sendRegistro','UserController@postRegister') -> name('send');
 
 //});
     Route::get('/home', 'HomeController@index')->name('home');

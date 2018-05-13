@@ -17,13 +17,13 @@
                         {!! Form::open(['route' => 'entrar', 'method' => 'post']) !!}
                         {{csrf_field()}}
                         <div class="form-group row">
-                            {!! Form::label('usuario','Usuario',['class' => 'col-sm-2 col-form-label', 'placeholder' => 'Usuario']) !!}
+                            {!! Form::label('email','Email',['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm-10">
-                                @if($errors->has('usuario'))
-                                    {!! Form::text('usuario', null, ['class' => ' form-control border border-danger', 'placeholder' => 'Usuario']) !!}
+                                @if($errors->has('email'))
+                                    {!! Form::email('email', null, ['class' => ' form-control border border-danger', 'placeholder' => 'Email']) !!}
                                     <i class="oi oi-x" style="color: red"></i>
                                 @else
-                                    {!! Form::text('usuario', null, ['class' => 'form-control', 'placeholder' => 'Usuario']) !!}
+                                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
                                 @endif
                                     <span class="text-danger">{{ $errors->first('usuario') }}</span>
                             </div>
