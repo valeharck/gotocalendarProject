@@ -18,9 +18,13 @@
 
                       </a>
                   </li>
-                  <li>
-                      <a href="#">Dashboard</a>
-                  </li>
+                  <!--<li>
+                      <a href="#menu1" class="collapsed" data-toggle="collapse" aria-expanded="false">Item 1<span class="fa fa-sort-desc"></span></a>
+                      <div class="collapse" id="menu1">
+                          <a href="#" class="submenu" data-parent="#menu1">Subitem 2</a>
+                          <a href="#" class="submenu" data-parent="#menu1">Subitem 3</a>
+                      </div>
+                  </li>-->
                   <li>
                       <a href="#">Shortcuts</a>
                   </li>
@@ -36,8 +40,8 @@
                   <li>
                       <a href="#">Services</a>
                   </li>
-                  <li>
-                      <a href="#">Contact</a>
+                  <li id="last">
+                      <a href="{{route('logout')}}">Cerrar Sesión</a>
                   </li>
               </ul>
           </div>
