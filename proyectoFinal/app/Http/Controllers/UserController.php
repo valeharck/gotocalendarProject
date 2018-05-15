@@ -34,8 +34,8 @@ class UserController extends Controller
             'password' => $request->get('password'),
         ];
         if (Auth::attempt($credentials, true)) {
-            $user = User::where('email', $credentials['email'])->get();
-            session(['user'=>$user]);
+            //$user = User::where('email', $credentials['email'])->get();
+            session(['user'=>Auth::user()]);
             return redirect('home');
         }
         $errors += [ 'invalid' => "Error, Usuario o contrasenya incorrectos" ];
