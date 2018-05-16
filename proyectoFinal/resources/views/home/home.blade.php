@@ -10,7 +10,6 @@
   @section('content')
       <!-- https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html -->
       <div id="wrapper" class="toggled">
-          <!-- Sidebar -->
           <div id="sidebar-wrapper">
               <ul class="sidebar-nav">
                   <li class="sidebar-brand">
@@ -25,40 +24,22 @@
                           <a href="#" class="submenu" data-parent="#menu1">Subitem 3</a>
                       </div>
                   </li>-->
-                  <li>
-                      <a href="#">Shortcuts</a>
-                  </li>
-                  <li>
-                      <a href="#">Overview</a>
-                  </li>
-                  <li>
-                      <a href="#">Events</a>
-                  </li>
-                  <li>
-                      <a href="#">About</a>
-                  </li>
-                  <li>
-                      <a href="#">Services</a>
-                  </li>
-                  <li id="last">
-                      <a href="{{route('logout')}}">Cerrar Sesión</a>
-                  </li>
+                  <li><a href="#">Perfil</a></li>
+                  <li><a href="#">Overview</a></li>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li id="last"><a href="{{route('logout')}}">Cerrar Sesión</a></li>
               </ul>
           </div>
-          <!-- /#sidebar-wrapper -->
-
-          <!-- Page Content -->
           <div id="page-content-wrapper">
-              <div class="container-fluid">
-                  <h1>Simple Sidebar</h1>
-                  <p>Bienvenido {{session()->get('user')->username}}</p>
-                  <!--<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>-->
+              <div class="container">
+                  <h1 id="h1" class="text-center">Bienvenido {{session()->get('user')->username}}</h1>
+                <!--<p>Bienvenido /*session()->get('user')->username*/</p>
+                  <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>-->
               </div>
           </div>
-          <!-- /#page-content-wrapper -->
       </div>
-      <!-- /#wrapper -->
-      <!-- Menu Toggle Script -->
   @endsection
 @else
     <script type="text/javascript">

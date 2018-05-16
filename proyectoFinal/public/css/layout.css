@@ -1,7 +1,9 @@
 body {
     overflow-x: hidden;
 }
-
+#h1  {
+    color: black;
+}
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -19,6 +21,7 @@ body {
 #last {
     position:fixed;
     bottom:0;
+    width: 250px;
 }
 #sidebar-wrapper {
     z-index: 1000;
