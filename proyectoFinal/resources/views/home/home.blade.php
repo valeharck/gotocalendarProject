@@ -24,7 +24,7 @@
                           <a href="#" class="submenu" data-parent="#menu1">Subitem 3</a>
                       </div>
                   </li>-->
-                  <li><a href="#">Perfil</a></li>
+                  <li><a href="{{route('profile')}}">Perfil</a></li>
                   <li><a href="#">Overview</a></li>
                   <li><a href="#">Events</a></li>
                   <li><a href="#">About</a></li>
@@ -35,6 +35,7 @@
           <div id="page-content-wrapper">
               <div class="container">
                   <h1 id="h1" class="text-center">Bienvenido {{session()->get('user')->username}}</h1>
+                  @yield('page')
                 <!--<p>Bienvenido /*session()->get('user')->username*/</p>
                   <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>-->
               </div>

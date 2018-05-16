@@ -87,4 +87,10 @@ class UserController extends Controller
         session()->flush();
         return redirect('/');
     }
+
+    public function getProfile() {
+        $id = session()->get('user')->id;
+        $user = User::where('id',$id)->get();
+        return view('home.profile', compact('user'));
+    }
 }

@@ -22,3 +22,4 @@ Route::get('/', function () {
     Route::get('/logout', 'UserController@getLogout')->name('logout');
 //});
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home/profile' , 'UserController@getProfile')->name('profile');
