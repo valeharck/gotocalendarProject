@@ -17,7 +17,7 @@
 
                       </a>
                   </li>
-                  <!--<li>
+                 <!-- <li>
                       <a href="#menu1" class="collapsed" data-toggle="collapse" aria-expanded="false">Item 1<span class="fa fa-sort-desc"></span></a>
                       <div class="collapse" id="menu1">
                           <a href="#" class="submenu" data-parent="#menu1">Subitem 2</a>
@@ -25,10 +25,9 @@
                       </div>
                   </li>-->
                   <li><a href="{{route('profile')}}">Perfil</a></li>
-                  <li><a href="#">Overview</a></li>
-                  <li><a href="#">Events</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Services</a></li>
+                  <li><a href="">Bloc de Notas</a></li>
+                  <li><a href="#">Recordatorios</a></li>
+                  <li><a href="#">Calendario</a></li>
                   <li id="last"><a href="{{route('logout')}}">Cerrar Sesión</a></li>
               </ul>
           </div>
