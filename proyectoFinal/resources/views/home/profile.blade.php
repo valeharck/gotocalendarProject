@@ -98,4 +98,7 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        var update = '<?php echo e(route('update')); ?>';
+    </script>
 @endsection

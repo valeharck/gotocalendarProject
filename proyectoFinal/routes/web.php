@@ -23,3 +23,4 @@ Route::get('/', function () {
 //});
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/profile' , 'UserController@getProfile')->name('profile');
+    Route::post('/home/profile' , 'UserController@updateUser')->name('update');

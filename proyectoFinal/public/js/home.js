@@ -6,21 +6,45 @@ $(document).ready(function () {
     $('#actualizar').click(function () {
         actualizar();
     });
+
+    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 })
 
 
 function actualizar() {
-   let nombre = $('#nombre').val();
-   let apellidos = $('#apellidos').val();
-   let fecha_nacimiento = $('#fecha_nacimiento').val();
-   let email = $('#email').val();
-   let username = $('#username').val();
-   let password = $('#password').val();
+   var nombre = $('#nombre').val();
+   var apellidos = $('#apellidos').val();
+   var fecha_nacimiento = $('#fecha_nacimiento').val();
+   var email = $('#email').val();
+   var username = $('#username').val();
+   var password = $('#password').val();
 
-   alert('Usuario ' + nombre + ', ' + apellidos + ', ' +fecha_nacimiento+ ', ' + email + ', ' + username + ', ' + password);
-    swal("This modal will disappear soon!", {
-        icon: "success",
-        buttons: false,
-        timer: 3000,
-    });
+   var data = {
+       'nombre' : nombre,
+       'apellidos' : apellidos,
+       'fecha_nacimiento' : fecha_nacimiento,
+       'email' : email,
+       'username' : username,
+       'password' : password
+   }
+   console.log(data);
+   $.ajax({
+       /*headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       },*/
+       url: update,
+       data: data,
+       method: 'POST',
+       success: function (response) {
+           if (response.actualizado == true) {
+               alert("okay");
+           }
+       }
+   }).then(function (value) {
+       swal("This modal will disappear soon!", {
+           icon: "success",
+           buttons: false,
+           timer: 1000,
+       });
+   })
 }

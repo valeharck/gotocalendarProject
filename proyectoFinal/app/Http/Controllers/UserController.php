@@ -93,4 +93,33 @@ class UserController extends Controller
         $user = User::where('id',$id)->get();
         return view('home.profile', compact('user','contra'));
     }
+
+    public function updateUser(Request $request){
+        if ($request->ajax()){
+            $user = new User();
+            $user->id =  session()->get('user')->id;
+            $user->nombre = $request->nombre;
+            $user->apellidos = $request->apellidos;
+            $user->fecha_nacimiento = $request->fecha_nacimiento;
+            $user->email = $request->email;
+            $user->username = $request->username;
+            $user->password = $request->password;
+
+            $user = User::where('id', id)->update([
+                'nombre' => nombre,
+                'apellidos' => apellidos,
+                'fecha_nacimiento' => fecha_nacimiento,
+                'email' => email,
+                'username' => username,
+                'password' => password,
+            ]);
+            /*if ($user->save()){
+                return response()->json([
+                    'Actualizado' => true
+                ]);
+            } else {
+                return false;
+            }*/
+        }
+    }
 }
