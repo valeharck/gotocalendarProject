@@ -15,6 +15,7 @@
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
     @yield('javascript')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     @yield('header')

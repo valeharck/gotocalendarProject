@@ -7,7 +7,6 @@ $(document).ready(function () {
         actualizar();
     });
 
-    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 })
 
 
@@ -27,24 +26,13 @@ function actualizar() {
        'username' : username,
        'password' : password
    }
-   console.log(data);
-   $.ajax({
-       /*headers: {
-           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-       },*/
-       url: update,
-       data: data,
-       method: 'POST',
-       success: function (response) {
-           if (response.actualizado == true) {
-               alert("okay");
-           }
-       }
-   }).then(function (value) {
-       swal("This modal will disappear soon!", {
+
+   axios.put(update,data).then(function () {
+       swal("Usuario actualizado", {
            icon: "success",
            buttons: false,
            timer: 1000,
        });
+       axios.get(profile);
    })
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Input;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -94,32 +95,17 @@ class UserController extends Controller
         return view('home.profile', compact('user','contra'));
     }
 
-    public function updateUser(Request $request){
-        if ($request->ajax()){
-            $user = new User();
-            $user->id =  session()->get('user')->id;
-            $user->nombre = $request->nombre;
-            $user->apellidos = $request->apellidos;
-            $user->fecha_nacimiento = $request->fecha_nacimiento;
-            $user->email = $request->email;
-            $user->username = $request->username;
-            $user->password = $request->password;
+    public function updateUser(){
 
-            $user = User::where('id', id)->update([
-                'nombre' => nombre,
-                'apellidos' => apellidos,
-                'fecha_nacimiento' => fecha_nacimiento,
-                'email' => email,
-                'username' => username,
-                'password' => password,
-            ]);
-            /*if ($user->save()){
-                return response()->json([
-                    'Actualizado' => true
-                ]);
-            } else {
-                return false;
-            }*/
-        }
+        $data = Input::all();
+        $id =  session()->get('user')->id;
+        $user = User::find($id)->first();
+        $user->nombre = $data['nombre'];
+        $user->apellidos = $data['apellidos'];
+        $user->fecha_nacimiento = $data['fecha_nacimiento'];
+        $user->email = $data['email'];
+        $user->username = $data['username'];
+        $user->password = $data['password'];
+        $user->update();
     }
 }

@@ -100,5 +100,6 @@
     </div>
     <script type="text/javascript">
         var update = '<?php echo e(route('update')); ?>';
+        var profile = '<?php echo e(route('profile')); ?>';
     </script>
 @endsection

@@ -14,13 +14,17 @@
 Route::get('/', function () {
     return view('main.mainHome');
 })->name('inicio');
-//Route::group(['prefix' =>'user', 'middleware' => 'authuser'], function(){
-    Route::get('/login', 'UserController@getLogin')->name('login');
-    Route::post('/postlogin', 'UserController@postLogin')->name('entrar');
-    Route::get('/registro', 'UserController@getRegister')->name('registro');
-    Route::post('/sendRegistro','UserController@postRegister') -> name('send');
-    Route::get('/logout', 'UserController@getLogout')->name('logout');
-//});
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/home/profile' , 'UserController@getProfile')->name('profile');
-    Route::post('/home/profile' , 'UserController@updateUser')->name('update');
+
+Route::get('/login', 'UserController@getLogin')->name('login');
+Route::post('/postlogin', 'UserController@postLogin')->name('entrar');
+Route::get('/registro', 'UserController@getRegister')->name('registro');
+Route::post('/sendRegistro','UserController@postRegister') -> name('send');
+Route::get('/logout', 'UserController@getLogout')->name('logout');
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/profile' , 'UserController@getProfile')->name('profile');
+Route::put('/home/profile' , 'UserController@updateUser')->name('update');
+
+Route::get('/home/bloc', 'HomeController@getBlocNotas')->name('blocNotas');
+Route::post('/home/bloc', 'HomeController@addNotes')->name('addNote');
+

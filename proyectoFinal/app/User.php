@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $guarded = [
         'id', 'remember_token', 'timestamps'
     ];
+
+    public function notes()
+    {
+        return $this->hasMany('App\notes');
+    }
 }
