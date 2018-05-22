@@ -1,0 +1,52 @@
+#divNotas{
+    margin: auto;
+}
+#divNotas input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    float: left;
+    width: 80%;
+}
+
+
+#divAdd #addNota {
+    padding: 10px;
+    font-size: 17px;
+    float: left;
+    width: 79.5%;
+}
+#divNotas button{
+    float: left;
+    width: 50px;
+    padding: 10px;
+    background: none;
+    font-size: 17px;
+    border:none;
+    border-left: none;
+    cursor: pointer;
+}
+#divAdd button {
+    float: left;
+    width: 90px;
+    padding: 10px;
+    background: none;
+    font-size: 17px;
+    border:none;
+    border-left: none;
+    cursor: pointer;
+}
+#divNotas button:focus {
+    box-shadow: none;
+    border: none;
+}
+input[type=text] {
+    background: none;
+    border: none;
+    border-radius: 0px;
+}
+input[type=text]:focus {
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-bottom: 3px solid black;
+}

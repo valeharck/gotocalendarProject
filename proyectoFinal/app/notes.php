@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class notes extends Model
 {
     protected $fillable = [
-        'nota'
+        'nota','user_id'
     ];
 
     protected $guarded = [
-        'id', 'user_id', 'timestamps'
+        'id', 'timestamps'
     ];
 
     public function user()
