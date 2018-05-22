@@ -6,6 +6,7 @@ use App\notes;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -24,16 +25,13 @@ class HomeController extends Controller
         return view('home.notes', compact('notes'));
     }
 
-    public function setNota(Request $request) {
+    public function setNota() {
+        $data = Input::all();
         $user_id = session()->get('user')->id;
         $note = new notes();
-        $note->nota = $request->nota;
+        $note->nota = $data['nota'];
         $note->user_id = $user_id;
-        if ($note->save()){
-            return true ;
-        } else {
-            return false;
-        }
+        $note->save();
     }
 
     public function updateNota() {

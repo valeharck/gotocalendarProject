@@ -7,7 +7,7 @@
            <div class="col col-6 col-md-6 offset-md-3 pt-3 pb-3">
                <div class="form-group" id="divAdd">
                    {!! Form::text('nota',null, ['class' => 'form-control', 'placeholder' => 'Nota', 'id' => 'addNota']) !!}
-                   <button>Añadir</button>
+                   {!! Form::submit('Añadir', ['class' => '', 'id' => 'anyadNota']) !!}
                </div>
                @foreach($notes as $nota)
                <div class="form-group" id="divNotas">
@@ -19,4 +19,8 @@
            </div>
        </div>
    </div>
+   <script type="text/javascript">
+       var anyadir = '<?php echo e(route('addNote')); ?>';
+       var notas = '<?php echo e(route('blocNotas')); ?>';
+   </script>
 @endsection

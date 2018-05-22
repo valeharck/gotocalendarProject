@@ -26,7 +26,7 @@ Route::get('/home/profile' , 'UserController@getProfile')->name('profile');
 Route::put('/home/profile' , 'UserController@updateUser')->name('update');
 
 Route::get('/home/bloc', 'HomeController@getBlocNotas')->name('blocNotas');
-Route::post('/home/bloc', 'HomeController@addNotes')->name('addNote');
+Route::post('/home/bloc', 'HomeController@setNota')->name('addNote');
 
 Route::get('home/recordatorios', 'HomeController@getRecordatorios')->name('recordatorios');
 

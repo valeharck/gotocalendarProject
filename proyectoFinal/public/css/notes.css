@@ -25,7 +25,7 @@
     border-left: none;
     cursor: pointer;
 }
-#divAdd button {
+#divAdd #anyadNota {
     float: left;
     width: 90px;
     padding: 10px;

@@ -7,6 +7,10 @@ $(document).ready(function () {
         actualizar();
     });
 
+    $('#anyadNota').click(function () {
+        addNota();
+    })
+
 })
 
 
@@ -35,4 +39,20 @@ function actualizar() {
        });
        axios.get(profile);
    })
+}
+
+function addNota() {
+    var nota = $('#nota').val();
+    var data = {
+        'nota' : nota
+    }
+
+    axios.post(anyadir,data).then(function () {
+        axios.get(notas);
+        swal("Nota añadida correctamente", {
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+        });
+    })
 }
