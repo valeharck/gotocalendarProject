@@ -15,7 +15,7 @@ class HomeController extends Controller
         return view('home.home', compact('user'));
     }
     public function getNotes($id){
-        $notes = User::find($id)->first()->notes;
+        $notes = User::find($id)->notes;
         return $notes;
     }
 
@@ -38,7 +38,8 @@ class HomeController extends Controller
 
     }
 
-    public function deleteNota() {
-
+    public function deleteNota(Request $request) {
+        notes::where('id',$request->id)->delete();
+        //$nota->delete();
     }
 }

@@ -9,10 +9,13 @@ $(document).ready(function () {
 
     $('#anyadNota').click(function () {
         addNota();
+    });
+
+    $('#buttonDelete').click(function () {
+        delNota();
     })
 
 })
-
 
 function actualizar() {
    var nombre = $('#nombre').val();
@@ -42,17 +45,34 @@ function actualizar() {
 }
 
 function addNota() {
-    var nota = $('#nota').val();
+    var nota = $('#addNota').val();
     var data = {
         'nota' : nota
     }
-
-    axios.post(anyadir,data).then(function () {
-        axios.get(notas);
+    axios.all([
+        axios.post(anyadir,data),
+        axios.get(notas)
+    ]).then(axios.spread(function (noteAd, note) {
         swal("Nota añadida correctamente", {
             icon: "success",
             buttons: false,
             timer: 1000,
         });
-    })
+        location.reload();
+    }));
+}
+
+function delNota(){
+    var id = $('#delete').val();
+    axios.all([
+        axios.delete('bloc/' + id),
+        axios.get(notas)
+    ]).then(axios.spread(function (noted, note) {
+        swal("Nota eliminada correctamente", {
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+        });
+        location.reload();
+    }));
 }
