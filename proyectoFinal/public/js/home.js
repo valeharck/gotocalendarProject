@@ -3,17 +3,10 @@ $(document).ready(function () {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-    $('#actualizar').click(function () {
-        actualizar();
-    });
-
-    $('#anyadNota').click(function () {
-        addNota();
-    });
-
-    $('#buttonDelete').click(function () {
-        delNota();
-    })
+    $('#actualizar').click(function () { actualizar() });
+    $('#anyadNota').click(function () { addNota() });
+    $('#buttonDelete').click(function () { delNota() });
+    $('#updateNota').click(function () { actualizarNota() })
 
 })
 
@@ -54,6 +47,24 @@ function addNota() {
         axios.get(notas)
     ]).then(axios.spread(function (noteAd, note) {
         swal("Nota añadida correctamente", {
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+        });
+        location.reload();
+    }));
+}
+
+function actualizarNota(){
+    var data = {
+        'id' : $('#delete').val(),
+        'nota' : $('#nota').val()
+    }
+    axios.all([
+        axios.put(updateNota,data),
+        axios.get(notas)
+    ]).then(axios.spread(function (noteUp, note) {
+        swal("Nota actualizada correctamente", {
             icon: "success",
             buttons: false,
             timer: 1000,
