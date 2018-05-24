@@ -12,8 +12,8 @@
                @foreach($notes as $nota)
                <div class="form-group" id="divNotas">
                    {!! Form::hidden('nota',$nota->id, ['class' => 'form-control', 'id' => 'delete']) !!}
-                   {!! Form::text('nota',$nota->nota, ['class' => 'form-control', 'placeholder' => 'Nota', 'id' => 'nota']) !!}
-                   <button id="updateNota"><i class="fa fa-check"  style="color: green;"></i></button>
+                   {!! Form::text('nota',$nota->nota, ['class' => 'form-control', 'placeholder' => 'Nota', 'id' => 'nota'.$nota->id]) !!}
+                   <button id={{$nota->id}} onclick='actualizarNota({{$nota->id}} )'><i class="fa fa-check xxxx"  style="color: green;"></i></button>
                    <button id="buttonDelete"><i class="fa fa-times" style="color: red;"></i></button>
                </div>
                @endforeach

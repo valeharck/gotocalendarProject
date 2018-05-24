@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function updateNota() {
         $data = Input::all();
         $id = $data['id'];
-        $nota = notes::find($id)->first();
+        $nota = notes::find($id);
         $nota->nota = $data['nota'];
         $nota->update();
     }

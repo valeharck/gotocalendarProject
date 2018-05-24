@@ -6,10 +6,12 @@ $(document).ready(function () {
     $('#actualizar').click(function () { actualizar() });
     $('#anyadNota').click(function () { addNota() });
     $('#buttonDelete').click(function () { delNota() });
-    $('#updateNota').click(function () { actualizarNota() })
+   // $('.xxxx').click(function () { actualizarNota() })
 
 })
-
+function prueba(x){
+    alert($('#nota'+x).val());
+}
 function actualizar() {
    var nombre = $('#nombre').val();
    var apellidos = $('#apellidos').val();
@@ -55,10 +57,12 @@ function addNota() {
     }));
 }
 
-function actualizarNota(){
+function actualizarNota(id_nota){
+    alert(id_nota);
+    alert($('#nota'+id_nota).val());
     var data = {
-        'id' : $('#delete').val(),
-        'nota' : $('#nota').val()
+        'id' : id_nota,
+        'nota' : $('#nota'+id_nota).val()
     }
     axios.all([
         axios.put(updateNota,data),
