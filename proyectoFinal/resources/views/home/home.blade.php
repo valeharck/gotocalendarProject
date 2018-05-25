@@ -4,6 +4,7 @@
   @section('css')
       <link href="{{ asset('css/layout.css')}}" rel="stylesheet">
       <link href="{{ asset('css/notes.css')}}" rel="stylesheet">
+      <link href="{{ asset('js/fullcalendar-3.9.0/fullcalendar.css')}}" rel="stylesheet">
   @endsection
   @section('javascript')
       <script type="text/javascript" src="{{asset('js/home.js')}}" defer ></script>
@@ -27,7 +28,7 @@
                           <a href="#" class="submenu" data-parent="#menu1">Subitem 3</a>
                       </div>
                   </li>
-                  <li><a href="#">Calendario</a></li>
+                  <li><a href="{{route('calendar')}}">Calendario</a></li>
                   <li id="last"><a href="{{route('logout')}}">Cerrar Sesión</a></li>
               </ul>
           </div>

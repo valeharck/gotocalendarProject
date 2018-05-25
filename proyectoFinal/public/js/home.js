@@ -5,13 +5,7 @@ $(document).ready(function () {
     });
     $('#actualizar').click(function () { actualizar() });
     $('#anyadNota').click(function () { addNota() });
-    $('#buttonDelete').click(function () { delNota() });
-   // $('.xxxx').click(function () { actualizarNota() })
-
 })
-function prueba(x){
-    alert($('#nota'+x).val());
-}
 function actualizar() {
    var nombre = $('#nombre').val();
    var apellidos = $('#apellidos').val();
@@ -38,7 +32,6 @@ function actualizar() {
        axios.get(profile);
    })
 }
-
 function addNota() {
     var nota = $('#addNota').val();
     var data = {
@@ -56,10 +49,7 @@ function addNota() {
         location.reload();
     }));
 }
-
 function actualizarNota(id_nota){
-    alert(id_nota);
-    alert($('#nota'+id_nota).val());
     var data = {
         'id' : id_nota,
         'nota' : $('#nota'+id_nota).val()
@@ -76,11 +66,9 @@ function actualizarNota(id_nota){
         location.reload();
     }));
 }
-
-function delNota(){
-    var id = $('#delete').val();
+function delNota(id_nota){
     axios.all([
-        axios.delete('bloc/' + id),
+        axios.delete('bloc/' + id_nota),
         axios.get(notas)
     ]).then(axios.spread(function (noted, note) {
         swal("Nota eliminada correctamente", {

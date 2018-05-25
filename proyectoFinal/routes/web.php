@@ -32,3 +32,6 @@ Route::put('home/bloc', 'HomeController@updateNota')->name('updateNota');
 
 Route::get('home/recordatorios', 'HomeController@getRecordatorios')->name('recordatorios');
 
+
+
+Route::get('/home/calendar' , 'CalendarController@getCalendar')->name('calendar');
