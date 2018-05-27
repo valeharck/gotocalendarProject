@@ -1,0 +1,13 @@
+#titleEvent,#fecha_fin,#fecha_ini, #titleEvent_act, #fecha_ini_act,#fecha_fin_act {
+    background: none;
+    border: none;
+    border-radius: 0px;
+    display: inline;
+}
+#fecha_ini:focus ,#titleEvent:focus, #fecha_fin:focus, #titleEvent_act:focus,#fecha_ini_act:focus,#fecha_fin_act:focus {
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid black;
+}
+

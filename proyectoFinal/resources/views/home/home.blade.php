@@ -4,6 +4,7 @@
   @section('css')
       <link href="{{ asset('css/layout.css')}}" rel="stylesheet">
       <link href="{{ asset('css/notes.css')}}" rel="stylesheet">
+      <link href="{{ asset('css/calendar.css')}}" rel="stylesheet">
       <link href="{{ asset('js/fullcalendar-3.9.0/fullcalendar.css')}}" rel="stylesheet">
   @endsection
   @section('javascript')
