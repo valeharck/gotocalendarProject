@@ -22,13 +22,14 @@
                   </li>
                   <li><a href="{{route('profile')}}">Perfil</a></li>
                   <li><a href="{{route('blocNotas')}}">Bloc de Notas</a></li>
-                  <li>
+                  <li><a href="{{route('recordatorios')}}">Recordatorios</a></li>
+                  <!--<li>
                       <a href="#menu1" class="collapsed" data-toggle="collapse" aria-expanded="false">Recordatorios<span class="fa fa-sort-desc"></span></a>
                       <div class="collapse" id="menu1">
                           <a href="#" class="submenu" data-parent="#menu1">Subitem 2</a>
                           <a href="#" class="submenu" data-parent="#menu1">Subitem 3</a>
                       </div>
-                  </li>
+                  </li>-->
                   <li><a href="{{route('calendar')}}">Calendario</a></li>
                   <li id="last"><a href="{{route('logout')}}">Cerrar Sesión</a></li>
               </ul>

@@ -30,8 +30,11 @@ Route::post('/home/bloc', 'HomeController@setNota')->name('addNote');
 Route::delete('home/bloc/{id}', 'HomeController@deleteNota');
 Route::put('home/bloc', 'HomeController@updateNota')->name('updateNota');
 
-Route::get('home/recordatorios', 'HomeController@getRecordatorios')->name('recordatorios');
-
+Route::get('/home/recordatorios', 'RecController@getRecordatorios')->name('recordatorios');
+//Route::get('/home/recordatorios/info' , 'RecController@getInfoRecordatorios')->name('getInfoRec');
+Route::post('/home/recordatorios', 'RecController@setRecordatorio')->name('setRecord');
+Route::put('home/recordatorios', 'RecController@updateRecord')->name('updateRecord');
+Route::delete('home/recordatorios', 'RecController@deleteRecord');
 
 
 
