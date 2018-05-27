@@ -35,4 +35,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\eventos');
     }
+    public function recordatorios()
+    {
+        return $this->hasMany('App\recordatorios');
+    }
 }

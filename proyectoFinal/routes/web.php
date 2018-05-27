@@ -34,6 +34,7 @@ Route::get('home/recordatorios', 'HomeController@getRecordatorios')->name('recor
 
 
 
+
 Route::get('/home/calendar' , 'CalendarController@getCalendar')->name('calendar');
 Route::get('/home/calendar/eventos' , 'CalendarController@getCalendarInfo')->name('calendarInfo');
 Route::post('home/calendar', 'CalendarController@addEvent')->name('setEvent');
