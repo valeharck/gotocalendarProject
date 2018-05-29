@@ -15,12 +15,13 @@ class RecController extends Controller
 
     public function getInfoRecordatorios(){
         $rec = recordatorios::all();
+        $array = array();
         foreach ( $rec as $r){
-            $array[] = array(
+            array_push($array,[
                 'id' => $r->id,
                 'taitle' => $r->titulo,
                 'tasks' => recordatorios::find($r->id)->tasks
-            );
+            ]);
         }
         return response()->json($array);
     }

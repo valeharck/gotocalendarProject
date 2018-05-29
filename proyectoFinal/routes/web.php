@@ -35,7 +35,7 @@ Route::get('/home/recordatorios/info' , 'RecController@getInfoRecordatorios')->n
 Route::get('/home/recordatorios/{id}', 'RecController@getRecordatoriospecific');
 Route::post('/home/recordatorios', 'RecController@setRecordatorio')->name('setRecord');
 Route::put('home/recordatorios', 'RecController@updateRecord')->name('updateRecord');
-Route::delete('home/recordatorios', 'RecController@deleteRecord');
+Route::delete('home/recordatorios/{id}', 'RecController@deleteRecord');
 
 
 

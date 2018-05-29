@@ -71,5 +71,6 @@
     <script type="text/javascript">
         var addRecd = '<?php echo e(route('setRecord')); ?>';
         var getInfoRec = '<?php echo e(route('getInfoRec')); ?>';
+        var updRecord = '<?php echo e(route('updateRecord')); ?>';
     </script>
 @endsection
