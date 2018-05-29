@@ -13,6 +13,23 @@ class RecController extends Controller
         return view('home.recordatorio');
     }
 
+    public function getInfoRecordatorios(){
+        $rec = recordatorios::all();
+        foreach ( $rec as $r){
+            $array[] = array(
+                'id' => $r->id,
+                'taitle' => $r->titulo,
+                'tasks' => recordatorios::find($r->id)->tasks
+            );
+        }
+        return response()->json($array);
+    }
+
+    public function getRecordatoriospecific(Request $request){
+        $rec = recordatorios::find($request->id);
+        return response()->json($rec);
+    }
+
     public function setRecordatorio(){
         $data = Input::all();
         $user_id = session()->get('user')->id;

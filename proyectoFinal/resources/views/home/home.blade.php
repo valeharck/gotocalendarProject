@@ -6,6 +6,7 @@
       <link href="{{ asset('css/notes.css')}}" rel="stylesheet">
       <link href="{{ asset('css/calendar.css')}}" rel="stylesheet">
       <link href="{{ asset('js/fullcalendar-3.9.0/fullcalendar.css')}}" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   @endsection
   @section('javascript')
       <script type="text/javascript" src="{{asset('js/home.js')}}" defer ></script>
