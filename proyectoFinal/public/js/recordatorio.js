@@ -8,9 +8,6 @@ $(document).ready(function () {
         anyadirRecordatorio();    
     });
 
-    $('#butModalRecUpdt').on('click',function () {
-        $('#titleRecupdt').val();
-    })
 
 });
 
@@ -28,7 +25,7 @@ function cargarInformacion() {
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse`+actual.id+`" aria-expanded="false" aria-controls="collapseOne">
                                     `+actual.taitle+`
                                 </button>
-                                <button id="updtRec" value="`+actual.id+`" style="float: right" class="but btn btn-link" ><span class="fas fa-edit" ></span></button>
+                                <button onclick='mostrarModalModify(`+actual.id+`)' id="updtRec" value="`+actual.id+`" style="float: right" class="but btn btn-link" ><span class="fas fa-edit" ></span></button>
                                 <button  value="`+actual.id+`" style="float: right" class="btn btn-link" id="delRec"><span class="fas fa-trash-alt" ></span></button>
                             </h5>
                         </div>
@@ -42,11 +39,6 @@ function cargarInformacion() {
                     </div>`;
         }
         $('#accordion').append(texto);
-        $('#updtRec').on('click',function () {
-            var id = $(this).val();
-            mostrar(id);
-            $('#modalU').modal();
-        });
     })
 }
 function mostrar(id) {
@@ -71,6 +63,18 @@ function anyadirRecordatorio() {
     })
 }
 
-function actualizarRec() {
-    
+
+function mostrarModalModify(id) {
+    mostrar(id);
+    $('#modalU').modal();
+    $('#butModalRecUpdt').on('click',function () {
+        updateRecordatorio(id);
+    })
+}
+function updateRecordatorio(id) {
+    alert(id);
+    var data = {
+        'id' : id,
+        'titulo' : $('titUpdt').val()
+    }
 }

@@ -1,6 +1,11 @@
 @extends('home.home')
 
 @section('javascript')
+    <style type="text/css">
+        table{
+            border: 1px solid black;
+        }
+    </style>
     <script type="text/javascript" src="{{asset('js/calendar.js')}}" defer ></script>
     <script type="text/javascript" src="{{asset('js/fullcalendar-3.9.0/lib/moment.min.js')}}" defer></script>
     <script type="text/javascript" src="{{asset('js/fullcalendar-3.9.0/fullcalendar.js')}}" defer></script>

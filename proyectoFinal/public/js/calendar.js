@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('#calendar').fullCalendar({
         themeSystem: 'bootstrap4',
         themeName: 'Lux',
+        eventBorderColor: 'black',
         locale: 'es',
         header: {
             left: 'prev,next today',

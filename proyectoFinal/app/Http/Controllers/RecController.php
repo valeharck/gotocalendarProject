@@ -40,7 +40,11 @@ class RecController extends Controller
     }
 
     public function updateRecord(){
-
+        $data = Input::all();
+        $id = $data['id'];
+        $recordatorios = recordatorios::find($id);
+        $recordatorios->titulo = $data['titulo'];
+        $recordatorios->update();
     }
 
     public function deleteRecord(Request $request) {
