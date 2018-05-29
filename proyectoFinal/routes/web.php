@@ -37,6 +37,8 @@ Route::post('/home/recordatorios', 'RecController@setRecordatorio')->name('setRe
 Route::put('home/recordatorios', 'RecController@updateRecord')->name('updateRecord');
 Route::delete('home/recordatorios/{id}', 'RecController@deleteRecord');
 
+Route::post('/home/recordatorios/task', 'RecController@setTask')->name('addTarea');
+Route::delete('/home/recordatorios/task/{id}', 'RecController@deleteTask');
 
 
 Route::get('/home/calendar' , 'CalendarController@getCalendar')->name('calendar');

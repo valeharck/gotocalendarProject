@@ -72,5 +72,6 @@
         var addRecd = '<?php echo e(route('setRecord')); ?>';
         var getInfoRec = '<?php echo e(route('getInfoRec')); ?>';
         var updRecord = '<?php echo e(route('updateRecord')); ?>';
+        var anyadirTarea = '<?php echo e(route('addTarea')); ?>';
     </script>
 @endsection

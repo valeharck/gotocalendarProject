@@ -33,15 +33,21 @@ function cargarInformacion() {
                             </h5>
                         </div>
                         <div id="collapse`+actual.id+`" class="collapse" aria-labelledby="heading`+actual.id+`" data-parent="#accordion">
-                            <div class="card-body">`;
+                            <div class="card-body" >
+                                <div class="form-group" id="divAdd" style="border-bottom: 1px solid #4e555b">
+                                <buton class="btn-sm btn btn-dark" id="addTarea" style="float: right;display: inline;margin-top: 5px;" onclick="addTarea(`+actual.id+`)">Añadir</buton>
+                                <input type="text" name="tasks" class="form-control" placeholder="Tarea" id="inputTarea`+actual.id+`" style="width: 85%;margin-bottom: 10px"/>
+                            </div>
+                             <div class="mr-5 ml-5">`;
                 if (typeof tasks!== 'undefined' && tasks.length > 0) {
                     for (let j = 0; j < tasks.length ; j++) {
-                        texto += `<li>`+tasks[j].body+`<span class="fa fa-check" style="float: right;color: green"></span></li>`;
+                        texto += `<li >`+tasks[j].body+`<span class="fa fa-check" style="float: right;color: green" onclick="removeTarea(`+tasks[j].id+`)"></span></li>`;
                     }
                 }
                 texto+=`</div>
-                        </div>
-                    </div>`;
+                    </div>
+                </div>
+            </div>`;
             }
         } else {
             texto = '';
@@ -92,7 +98,7 @@ function updateRecordatorio(id) {
             timer: 1000,
         });
         $('#modalU').modal('hide');
-        this.cargarInformacion();
+        cargarInformacion();
     })
 }
 
@@ -103,6 +109,32 @@ function borarRecordatorio(id) {
             buttons: false,
             timer: 1000,
         });
-        this.cargarInformacion();
+        cargarInformacion();
+    })
+}
+
+function addTarea(id){
+    var data = {
+        'body': $('#inputTarea' + id).val(),
+        'rec_id': id
+    }
+    axios.post(anyadirTarea, data).then(function () {
+        swal("Tarea creada", {
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+        });
+        cargarInformacion();
+    })
+}
+
+function removeTarea(id) {
+    axios.delete('recordatorios/task/' + id).then(function () {
+        swal("Tarea eliminada", {
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+        });
+        cargarInformacion();
     })
 }

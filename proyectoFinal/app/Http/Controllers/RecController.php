@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\recordatorios;
+use App\tasks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -50,5 +51,17 @@ class RecController extends Controller
 
     public function deleteRecord(Request $request) {
         recordatorios::where('id',$request->id)->delete();
+    }
+
+    public function setTask(){
+        $data = Input::all();
+        $tarea = new tasks();
+        $tarea->body = $data['body'];
+        $tarea->recordatorios_id = $data['rec_id'];
+        $tarea->save();
+    }
+
+    public function deleteTask(Request $request){
+        tasks::where('id',$request->id)->delete();
     }
 }
