@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use Illuminate\Support\Facades\Auth;
-
+use App\Mail\WelcomeEmail;
 
 class UserController extends Controller
 {
@@ -80,6 +81,13 @@ class UserController extends Controller
         $usuario->password = bcrypt($request->contrasenya);
         $usuario->remember_token = $request->_token;
         if ($usuario->save()){
+            /* ENVIAMOS CORREO DE BIENVENIDA*/
+            $objDemo = new \stdClass();
+            $objDemo->sender = 'Aitor Lopez';
+            $objDemo->receiver = $request->nombre;
+
+            Mail::to($request->email)->send(new WelcomeEmail($objDemo));
+            /* REDIRIGIMOS*/
             return view('main.mainHome');
         }
     }
