@@ -70,10 +70,10 @@
                                                     <table width="90%" border="0" cellspacing="0" cellpadding="0">
                                                         <tr>
                                                             <td>
-                                                                <h3>Bienvenido {{ $email->receiver}}</h3>
+                                                                <h3>Bienvenido/a {{ $email->receiver}}</h3>
                                                                 <p>El equipo de Go-To Calendar le da la bievenida a nuestra pagina web.</p>
                                                                 <br>
-                                                                <p>Le desamos que pueda organizarse de la mejor forma possible gracias a nosotros.</p>
+                                                                <p>Le desamos que pueda organizarse de la mejor forma posible gracias a nosotros.</p>
                                                                 <br>
                                                                 <p>Gracias por confiar en nosotros!</p>
                                                             </td>

@@ -5,7 +5,7 @@ return [
     'host' => env('MAIL_HOST', 'smtp.gmail.com'),
     'port' => env('MAIL_PORT', 587),
     'from' => [
-        'address' => "edtalopez@gmail.com",
+        'address' => "gotoalendar@gmail.com",
         'name' => env('MAIL_NAME', 'Example'),
     ],
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
