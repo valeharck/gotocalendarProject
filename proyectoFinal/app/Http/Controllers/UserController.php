@@ -65,6 +65,11 @@ class UserController extends Controller
         if ($errors->fails()) {
             return redirect()->back()->withErrors($errors);
         }
+        if(User::where('email', '=', $request->email)->first()){
+            return redirect()->back()->withErrors([
+                'emailFail' => "El email ya esxite",
+            ]);
+        }
         //creamos el usuario nuevo
         $usuario = new User();
         $usuario->nombre = $request->nombre;

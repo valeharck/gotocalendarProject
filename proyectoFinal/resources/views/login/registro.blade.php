@@ -20,6 +20,15 @@
         <div  class="row col-md-offset-2">
             <div  class="col col-6 col-md-6 offset-md-3 pt-5 pb-5">
                 <div class="panel panel-default">
+                    @if($errors->has('emailFail'))
+                        <script>
+                            swal('{{$errors->first('emailFail')}}', {
+                                icon: "warning",
+                                buttons: false,
+                                timer: 3000,
+                            });
+                        </script>
+                    @endif
                     <div class="panel-heading" id="panelh"><h4 class="panel-title text-center text-capitalize">Registro</h4></div>
                     <div class="panel-body pt-2 pb-2 pr-2 pl-2" id="registro">
 
