@@ -97,7 +97,7 @@ class UserController extends Controller
         return view('home.profile', compact('user','contra'));
     }
 
-    public function updateUser(){
+    public function updateUser(Request $request){
         $data = Input::all();
         $errors = Validator::make($data,[
             'nombre' => 'required',
@@ -105,19 +105,21 @@ class UserController extends Controller
             'fecha_nacimiento' => 'required',
             'email' => 'required|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/',
             'username' => 'required',
-            'contrasenya' => 'required',
         ],[
             'nombre.required' => 'No sabemos como te llamas, dinos tu nombre',
             'fecha_nacimiento.required' => 'Introduce tu fecha de nacimiento',
             'email.required' => 'Dinos cual es tu email',
             'email.regex' => 'introduce un email valido' ,
             'username.required' => 'Introduce un nombre de usuario',
-            'contrasenya.required' => 'Introduce una contrasenya',
         ]);
 
         if ($errors->fails()) {
-            return response()->json($errors);
-        } else {
+            return response()->json(array(
+                'success' => false,
+                'errors' => $errors->getMessageBag()->toArray()
+
+            ), 200);
+        }
             $id =  session()->get('user')->id;
             $user = User::find($id)->first();
             $user->nombre = $data['nombre'];
@@ -127,6 +129,8 @@ class UserController extends Controller
             $user->username = $data['username'];
             $user->password = $data['password'];
             $user->update();
+            return response()->json(array(
+                'succes' => true
+            ),200);
         }
-    }
 }

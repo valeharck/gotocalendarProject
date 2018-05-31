@@ -24,19 +24,16 @@ function actualizar() {
    }
 
    axios.put(update,data).then(function (response) {
-
-       if (response){
-           console.log(response)
+       if (response.data.success ==false){
            axios.get(profile);
            swal({
                title: "Error al actualizar el usuario",
                text: "Compruebe que todos los campos estan bien",
-               icon: "warning",
+               icon: "error",
                buttons: false,
                timer: 3000,
            });
        } else {
-           console.log(response)
            swal("Usuario actualizado", {
                icon: "success",
                buttons: false,
