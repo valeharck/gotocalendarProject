@@ -30,7 +30,7 @@ class WelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('aitor.lopez@iesjoandaustria.org')
+        return $this->from('gotoalendar@gmail.com')
             ->view('mails.mail');
     }
 }

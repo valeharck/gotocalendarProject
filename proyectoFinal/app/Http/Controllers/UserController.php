@@ -17,31 +17,25 @@ class UserController extends Controller
     }
 
     public function postLogin(Request $request){
-        $errors= Validator::make($request->all(),
-            [
-                'email' => 'required',
-                'password' => 'required'
-            ],
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ],
             [
                 'email.required' => 'Campo obligatorio',
                 'password.required' => 'Campo obligatorio'
             ]
         );
-        if ($errors->fails()){
-            return redirect()->back()->withErrors($errors);
-
-        }
-        $credentials = [
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
-        ];
-        if (Auth::attempt($credentials, true)) {
-            //$user = User::where('email', $credentials['email'])->get();
+        $credentials = $request->only('email','password');
+        if (Auth::attempt($credentials, true)){
             session(['user'=>Auth::user()]);
             return redirect('home');
         }
-        $errors += [ 'invalid' => "Error, Usuario o contrasenya incorrectos" ];
-        return redirect()->back()->with($errors);
+        return redirect()->back()
+            ->withInput($request->only('email', 'remember'))
+            ->withErrors([
+                'invalid' => "email o contrasenya incorrectos",
+            ]);
     }
 
     public function getRegister(){

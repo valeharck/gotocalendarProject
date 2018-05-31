@@ -12,7 +12,18 @@
         <div class="row col-md-offset-2">
             <div class="col col-6 col-md-6 offset-md-3 pt-5 pb-5">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h4 class="panel-title text-center text-capitalize">Iniciar Sesión</h4></div>
+                    <div class="panel-heading">
+                        @if($errors->has('invalid'))
+                            <script>
+                                swal('{{$errors->first('invalid')}}', {
+                                    icon: "warning",
+                                    buttons: false,
+                                    timer: 3000,
+                                });
+                            </script>
+                        @endif
+                        <h4 class="panel-title text-center text-capitalize">Iniciar Sesión</h4>
+                    </div>
                     <div class="panel-body pt-2 pb-2 pr-2-pl-2">
                         {!! Form::open(['route' => 'entrar', 'method' => 'post']) !!}
                         {{csrf_field()}}
@@ -25,18 +36,26 @@
                                 @else
                                     {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
                                 @endif
-                                    <span class="text-danger">{{ $errors->first('usuario') }}</span>
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
                             </div>
                         </div>
                         <div class="form-group row">
                             {!! Form::label('password','Contraseña',['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm-10">
-                                @if($errors->has('password'))
-                                    {!! Form::text('password', null, ['class' => ' form-control border border-danger', 'placeholder' => 'Password']) !!}
-                                    <i class="oi oi-x" style="color: red"></i>
-                                @else
-                                    {!! Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Contraseña']) !!}
-                                @endif
+                            @if($errors->has('password'))
+                                {{
+                                   Form::macro('inputContra', function(){
+                                       return '<input type="password" class="form-control border border-danger" placeholder="Contraseña" name="password" /><i class="oi oi-x" style="color: red"></i>';
+                                   })
+                               }}
+                            @else
+                                {{
+                                    Form::macro('inputContra', function(){
+                                        return '<input type="password" class="form-control" placeholder="Contraseña" name="password" />';
+                                    })
+                                }}
+                            @endif
+                            {!! Form::inputContra() !!}
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                         </div>
@@ -58,20 +77,4 @@
             </div>
         </div>
     </div>
-
-    <!--<form class="form-singin">
-        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>-->
-
 @endsection
