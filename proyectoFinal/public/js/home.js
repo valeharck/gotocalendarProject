@@ -23,13 +23,27 @@ function actualizar() {
        'password' : password
    }
 
-   axios.put(update,data).then(function () {
-       swal("Usuario actualizado", {
-           icon: "success",
-           buttons: false,
-           timer: 1000,
-       });
-       axios.get(profile);
+   axios.put(update,data).then(function (response) {
+
+       if (response){
+           console.log(response)
+           axios.get(profile);
+           swal({
+               title: "Error al actualizar el usuario",
+               text: "Compruebe que todos los campos estan bien",
+               icon: "warning",
+               buttons: false,
+               timer: 3000,
+           });
+       } else {
+           console.log(response)
+           swal("Usuario actualizado", {
+               icon: "success",
+               buttons: false,
+               timer: 1000,
+           });
+           axios.get(profile);
+       }
    })
 }
 function addNota() {

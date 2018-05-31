@@ -98,16 +98,35 @@ class UserController extends Controller
     }
 
     public function updateUser(){
-
         $data = Input::all();
-        $id =  session()->get('user')->id;
-        $user = User::find($id)->first();
-        $user->nombre = $data['nombre'];
-        $user->apellidos = $data['apellidos'];
-        $user->fecha_nacimiento = $data['fecha_nacimiento'];
-        $user->email = $data['email'];
-        $user->username = $data['username'];
-        $user->password = $data['password'];
-        $user->update();
+        $errors = Validator::make($data,[
+            'nombre' => 'required',
+            'apellidos' => 'required',
+            'fecha_nacimiento' => 'required',
+            'email' => 'required|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/',
+            'username' => 'required',
+            'contrasenya' => 'required',
+        ],[
+            'nombre.required' => 'No sabemos como te llamas, dinos tu nombre',
+            'fecha_nacimiento.required' => 'Introduce tu fecha de nacimiento',
+            'email.required' => 'Dinos cual es tu email',
+            'email.regex' => 'introduce un email valido' ,
+            'username.required' => 'Introduce un nombre de usuario',
+            'contrasenya.required' => 'Introduce una contrasenya',
+        ]);
+
+        if ($errors->fails()) {
+            return response()->json($errors);
+        } else {
+            $id =  session()->get('user')->id;
+            $user = User::find($id)->first();
+            $user->nombre = $data['nombre'];
+            $user->apellidos = $data['apellidos'];
+            $user->fecha_nacimiento = $data['fecha_nacimiento'];
+            $user->email = $data['email'];
+            $user->username = $data['username'];
+            $user->password = $data['password'];
+            $user->update();
+        }
     }
 }
