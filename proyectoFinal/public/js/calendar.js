@@ -69,14 +69,23 @@ function addEvent() {
             'fecha_ini' : fecha,
             'fecha_fin' : fin_fecha,
         };
-        axios.post(addEvento,data).then(function () {
-            var event={id:1 , title: title , start:  fecha};
-            $('#calendar').fullCalendar( 'renderEvent', event, true);
-            swal("Evento añadido", {
-                icon: "success",
-                buttons: false,
-                timer: 1000,
-            });
+        axios.post(addEvento,data).then(function (response) {
+            console.log(response)
+            if (response.data.success == false){
+                swal( "Ha ocurrido un error, compruebe que los campos estan bien escritos" , {
+                    icon: "warning",
+                    buttons: false,
+                    timer: 3000,
+                });
+            }else {
+                var event={id:1 , title: title , start:  fecha};
+                $('#calendar').fullCalendar( 'renderEvent', event, true);
+                swal("Evento añadido", {
+                    icon: "success",
+                    buttons: false,
+                    timer: 1000,
+                });
+            }
         })
         $('#myModal').modal('hide');
     } else {
@@ -86,14 +95,22 @@ function addEvent() {
             'fecha_ini' : fecha,
             'fecha_fin' : fin_fecha,
         }
-        axios.post(addEvento,data).then(function () {
-            var event={id:1 , title: title , start:  fecha, end : fin_fecha};
-            $('#calendar').fullCalendar('renderEvent', event, false);
-            swal("Evento añadido", {
-                icon: "success",
-                buttons: false,
-                timer: 1000,
-            });
+        axios.post(addEvento,data).then(function (response) {
+            if (response.data.success == false){
+                swal( "Ha ocurrido un error, compruebe que los campos estan bien escritos" , {
+                    icon: "warning",
+                    buttons: false,
+                    timer: 3000,
+                });
+            }else {
+                var event={id:1 , title: title , start:  fecha, end : fin_fecha};
+                $('#calendar').fullCalendar('renderEvent', event, false);
+                swal("Evento añadido", {
+                    icon: "success",
+                    buttons: false,
+                    timer: 1000,
+                });
+            }
         })
         $('#myModal').modal('hide');
     }
@@ -112,17 +129,25 @@ function actualizarEvento(id_evento){
         swal("La fecha de finalizacion no puede ser inferior a la de inicio", {
             icon: "warning",
             buttons: false,
-            timer: 1000,
+            timer: 3000,
         });
     } else {
-        axios.put(actualizarEv , eventUpdat).then(function () {
-            $('#calendar').fullCalendar( 'updateEvents', eventUpdat );
-            $('#calendar').fullCalendar( 'refetchEvents' );
-            swal("Evento actualizado correctamente", {
-                icon: "success",
-                buttons: false,
-                timer: 1000,
-            });
+        axios.put(actualizarEv , eventUpdat).then(function (response) {
+            if (response.data.success == false){
+                swal( "Ha ocurrido un error, compruebe que los campos estan bien escritos" , {
+                    icon: "warning",
+                    buttons: false,
+                    timer: 3000,
+                });
+            }else {
+                $('#calendar').fullCalendar( 'updateEvents', eventUpdat );
+                $('#calendar').fullCalendar( 'refetchEvents' );
+                swal("Evento actualizado correctamente", {
+                    icon: "success",
+                    buttons: false,
+                    timer: 1000,
+                });
+            }
         })
     }
 }

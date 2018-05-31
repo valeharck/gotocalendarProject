@@ -102,7 +102,7 @@ class UserController extends Controller
         return view('home.profile', compact('user','contra'));
     }
 
-    public function updateUser(Request $request){
+    public function updateUser(){
         $data = Input::all();
         $errors = Validator::make($data,[
             'nombre' => 'required',

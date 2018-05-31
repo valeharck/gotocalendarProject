@@ -67,14 +67,24 @@ function anyadirRecordatorio() {
     var data = {
         'titulo' : $('#titleRec').val()
     }
-    axios.post(addRecd,data).then(function () {
-        swal("Recordatorio añadido", {
-            icon: "success",
-            buttons: false,
-            timer: 1000,
-        });
-        $('#myModalRec').modal('hide');
-        cargarInformacion();
+    axios.post(addRecd,data).then(function (response) {
+        if (response.data.success == false) {
+            swal( "El titulo no puede estar vacio" , {
+                icon: "warning",
+                buttons: false,
+                timer: 1000,
+            });
+            $('#modalRec').modal('hide');
+        } else {
+            swal("Recordatorio añadido", {
+                icon: "success",
+                buttons: false,
+                timer: 1000,
+            });
+            $('#myModalRec').modal('hide');
+            cargarInformacion();
+        }
+
     })
 }
 
@@ -91,14 +101,23 @@ function updateRecordatorio(id) {
         'id' : id,
         'titulo' : $('#titUpdt').val()
     }
-   axios.put(updRecord,data).then(function () {
-        swal("Recordatorio modificado", {
-            icon: "success",
-            buttons: false,
-            timer: 1000,
-        });
-        $('#modalU').modal('hide');
-        cargarInformacion();
+   axios.put(updRecord,data).then(function (response) {
+       if (response.data.success == false){
+           swal( "El titulo no puede estar vacio" , {
+               icon: "warning",
+               buttons: false,
+               timer: 1000,
+           });
+           $('#modalU').modal('hide');
+       }else {
+           swal("Recordatorio modificado", {
+               icon: "success",
+               buttons: false,
+               timer: 1000,
+           });
+           $('#modalU').modal('hide');
+           cargarInformacion();
+       }
     })
 }
 
@@ -118,23 +137,32 @@ function addTarea(id){
         'body': $('#inputTarea' + id).val(),
         'rec_id': id
     }
-    axios.post(anyadirTarea, data).then(function () {
-        swal("Tarea creada", {
-            icon: "success",
-            buttons: false,
-            timer: 1000,
-        });
-        cargarInformacion();
+    axios.post(anyadirTarea, data).then(function (response) {
+        console.log(response);
+        if (response.data.success == false){
+            swal( "La tarea no puede estar vacio" , {
+                icon: "warning",
+                buttons: false,
+                timer: 1000,
+            });
+        }else {
+            swal("Tarea creada", {
+                icon: "success",
+                buttons: false,
+                timer: 1000,
+            });
+            cargarInformacion();
+        }
     })
 }
 
 function removeTarea(id) {
     axios.delete('recordatorios/task/' + id).then(function () {
-        swal("Tarea eliminada", {
-            icon: "success",
-            buttons: false,
-            timer: 1000,
-        });
-        cargarInformacion();
+            swal("Tarea eliminada", {
+                icon: "success",
+                buttons: false,
+                timer: 1000,
+            });
+            cargarInformacion();
     })
 }

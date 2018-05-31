@@ -51,13 +51,22 @@ function addNota() {
     axios.all([
         axios.post(anyadir,data),
         axios.get(notas)
-    ]).then(axios.spread(function (noteAd, note) {
-        swal("Nota añadida correctamente", {
-            icon: "success",
-            buttons: false,
-            timer: 1000,
-        });
-        location.reload();
+    ]).then(axios.spread(function (response, note) {
+        if(response.data.success==false){
+            swal("La nota no puede estar vacia", {
+                icon: "warning",
+                buttons: false,
+                timer: 1000,
+            });
+            location.reload();
+        } else {
+            swal("Nota añadida correctamente", {
+                icon: "success",
+                buttons: false,
+                timer: 1000,
+            });
+            location.reload();
+        }
     }));
 }
 function actualizarNota(id_nota){
@@ -68,13 +77,22 @@ function actualizarNota(id_nota){
     axios.all([
         axios.put(updateNota,data),
         axios.get(notas)
-    ]).then(axios.spread(function (noteUp, note) {
-        swal("Nota actualizada correctamente", {
-            icon: "success",
-            buttons: false,
-            timer: 1000,
-        });
-        location.reload();
+    ]).then(axios.spread(function (response, note) {
+        if(response.data.success==false){
+            swal("La nota no puede estar vacia", {
+                icon: "warning",
+                buttons: false,
+                timer: 1000,
+            });
+            location.reload();
+        } else {
+            swal("Nota actualizada correctamente", {
+                icon: "success",
+                buttons: false,
+                timer: 1000,
+            });
+            location.reload();
+        }
     }));
 }
 function delNota(id_nota){
