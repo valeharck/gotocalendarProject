@@ -100,22 +100,31 @@ function addEvent() {
 }
 
 function actualizarEvento(id_evento){
+    var start = $('#myModal2 #fecha_ini_act').val();
+    var end = $('#myModal2 #fecha_fin_act').val();
     var eventUpdat = {
         'id' : id_evento,
         'title': $('#myModal2 #titleEvent_act').val(),
-        'start': $('#myModal2 #fecha_ini_act').val(),
-        'end': $('#myModal2 #fecha_fin_act').val()
+        'start': start,
+        'end': end,
     }
-    axios.put(actualizarEv , eventUpdat).then(function () {
-        $('#calendar').fullCalendar( 'updateEvents', eventUpdat );
-        $('#calendar').fullCalendar( 'refetchEvents' );
-        swal("Evento actualizado correctamente", {
-            icon: "success",
+    if (new  Date(end) < new Date(start)) {
+        swal("La fecha de finalizacion no puede ser inferior a la de inicio", {
+            icon: "warning",
             buttons: false,
             timer: 1000,
         });
-    })
-
+    } else {
+        axios.put(actualizarEv , eventUpdat).then(function () {
+            $('#calendar').fullCalendar( 'updateEvents', eventUpdat );
+            $('#calendar').fullCalendar( 'refetchEvents' );
+            swal("Evento actualizado correctamente", {
+                icon: "success",
+                buttons: false,
+                timer: 1000,
+            });
+        })
+    }
 }
 
 function deleteEvent(id_evento){

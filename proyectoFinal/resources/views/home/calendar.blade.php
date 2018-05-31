@@ -33,7 +33,7 @@
                         {!! Form::label('fecha', 'Fecha Inicio', ['class' => 'col-md-2 col-form-label']) !!}
                         {{
                          Form::macro('inputDate', function(){
-                            return '<input type="datetime-local" class="form-control col-md-8" placeholder="Fecha de Inicio" name="fecha" id="fecha_ini" />';
+                            return '<input type="datetime-local" min=' . \Carbon\Carbon::today()->format('Y-m-d\TH:i:s')  .' class="form-control col-md-8" placeholder="Fecha de Inicio" name="fecha" id="fecha_ini" />';
                          })
                         }}
                         {!! Form::inputDate() !!}
@@ -85,7 +85,7 @@
                         {!! Form::label('fecha', 'Fecha Inicio', ['class' => 'col-md-2 col-form-label']) !!}
                         {{
                          Form::macro('inputDate', function(){
-                            return '<input type="datetime-local" class="form-control col-md-8" placeholder="Fecha de Inicio" name="fecha" id="fecha_ini_act" />';
+                            return '<input type="datetime-local" min=' . \Carbon\Carbon::today()->format('Y-m-d\TH:i:s')  .' class="form-control col-md-8" placeholder="Fecha de Inicio" name="fecha" id="fecha_ini_act" />';
                          })
                         }}
                         {!! Form::inputDate() !!}
