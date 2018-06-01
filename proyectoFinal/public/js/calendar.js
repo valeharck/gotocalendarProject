@@ -1,12 +1,25 @@
 $(document).ready(function () {
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    })
     $('#calendar').fullCalendar({
         themeSystem: 'bootstrap4',
         themeName: 'Lux',
-        eventBorderColor: 'black',
+        backgroundColor: '#30ab8d',
+        eventColor: '#30ab8d',
+        eventBorderColor:'#000000',
+        dayRender: function(date, cell){
+            var today = new Date().toDateString();
+            var ddate = date.toDate().toDateString();
+            if (ddate == today) {
+                cell.css("background-color", "#c1ffe0");
+            }
+        },
         locale: 'es',
         header: {
             left: 'prev,next today',
-            center: 'addEventButton',
+            center: 'addEventButton, month',
             right: 'month,agendaWeek,listMonth'
         },
         locale: 'sp',
@@ -119,9 +132,18 @@ function addEvent() {
 function actualizarEvento(id_evento){
     var start = $('#myModal2 #fecha_ini_act').val();
     var end = $('#myModal2 #fecha_fin_act').val();
+    var allDay;
+    console.log(end);
+    console.log(end.length);
+    if (end.length > 0){
+        allDay = false;
+    } else {
+        allDay = true;
+    }
     var eventUpdat = {
         'id' : id_evento,
         'title': $('#myModal2 #titleEvent_act').val(),
+        'allDay': allDay,
         'start': start,
         'end': end,
     }

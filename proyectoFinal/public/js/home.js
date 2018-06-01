@@ -1,10 +1,10 @@
 $(document).ready(function () {
+    $('#actualizar').click(function () { actualizar() });
+    $('#anyadNota').click(function () { addNota() });
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-    });
-    $('#actualizar').click(function () { actualizar() });
-    $('#anyadNota').click(function () { addNota() });
+    })
 })
 function actualizar() {
    var nombre = $('#nombre').val();

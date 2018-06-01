@@ -1,5 +1,9 @@
 $(document).ready(function () {
     cargarInformacion();
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    })
 
     $('#botonRec').on('click', function () {
         $('#myModalRec').modal();

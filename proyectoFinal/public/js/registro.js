@@ -12,5 +12,9 @@ $(document).ready(function () {
     $('#date').on("change",function(){
         alert("guay")
     });
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    })
 
 });

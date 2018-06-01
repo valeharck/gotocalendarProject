@@ -11,3 +11,18 @@
     border-bottom: 2px solid black;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #30ab8d;
+    border-color: #30ab8d;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #318668;
+    border-color: #2f6c4e;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #318668;
+    border-color: #2f6c4e;
+}
